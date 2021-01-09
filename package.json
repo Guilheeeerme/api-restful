@@ -4,12 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/server.js --watch src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "sucrase": "^3.17.0"
   }
 }
