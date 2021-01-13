@@ -6,6 +6,7 @@ class UserController {
     const user = await User.findAll({
       attributes: ["id", "name", "email", "status", "is_admin"],
     });
+    // console.log(req.userId);
     return res.json(user);
   }
 
@@ -59,8 +60,7 @@ class UserController {
       .unknown();
 
     try {
-      const { id } = req.params;
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(req.userId);
 
       if (!user) {
         res.status(400).json({

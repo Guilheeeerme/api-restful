@@ -3,10 +3,17 @@ import { Router } from "express";
 const routes = Router();
 
 import UserController from "../app/controllers/UserController";
+import AuthController from "../app/controllers/AuthController";
+
+import authMiddleware from "../app/middlewares/authMiddleware";
+
+routes.post("/users", UserController.create);
+routes.post("/auth", AuthController.create);
+
+routes.use(authMiddleware); // global, a partir daqui
 
 routes.get("/users", UserController.index);
 routes.get("/users/:id", UserController.show);
-routes.post("/users", UserController.create);
-routes.put("/users/:id", UserController.update);
+routes.put("/users/", UserController.update); // Sem necessidade do parametro, pois o usuario esta logado
 
 export default routes;
