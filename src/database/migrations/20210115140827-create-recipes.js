@@ -9,6 +9,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      name: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
       preparation_instructions: {
         type: Sequelize.TEXT,
         allowNull: false,

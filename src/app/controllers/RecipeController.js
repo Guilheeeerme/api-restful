@@ -17,6 +17,7 @@ class RecipeController {
   async create(req, res) {
     const schema = Yup.object()
       .shape({
+        name: Yup.string().max(100).required(),
         preparation_instructions: Yup.string().required(),
         preparation_time: Yup.number().required(),
         portions: Yup.number().required(),
@@ -41,8 +42,48 @@ class RecipeController {
       return res.status(400).json({ error });
     }
   }
-  async update(req, res) {}
-  async delete(req, res) {}
+  async update(req, res) {
+    const schema = Yup.object()
+      .shape({
+        name: Yup.string().max(100).required(),
+        preparation_instructions: Yup.string().required(),
+        preparation_time: Yup.number().required(),
+        portions: Yup.number().required(),
+        category_id: Yup.number().required(),
+        attachment_id: Yup.number(),
+      })
+      .noUnknown();
+
+    try {
+      const recipe = await Recipe.findByPk(req.params.id);
+
+      if (!recipe) {
+        return res.status(400).json({ error: "Receita não encontrada" });
+      }
+
+      const validFields = await schema.validate(req.body, {
+        abortEarly: false,
+        stripUnknown: true,
+      });
+
+      await recipe.update(validFields);
+
+      return res.json(recipe);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+  async delete(req, res) {
+    const recipe = await Recipe.findByPk(req.params.id);
+
+    if (!recipe) {
+      return res.status(400).json({ error: "Receita não encontrada" });
+    }
+
+    await recipe.destroy();
+
+    return res.json({ message: "Receita removida com sucesso" });
+  }
 }
 
 export default new RecipeController();

@@ -4,6 +4,7 @@ class Recipe extends Model {
   static init(sequelize) {
     super.init(
       {
+        name: Sequelize.STRING(100),
         preparation_instructions: Sequelize.TEXT,
         preparation_time: Sequelize.INTEGER,
         portions: Sequelize.INTEGER,
