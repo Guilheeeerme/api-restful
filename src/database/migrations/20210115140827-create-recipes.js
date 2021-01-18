@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
       },
       user_id: {
-        // Relacionamento
+        // Relacionamento está definido no model
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -37,7 +37,7 @@ module.exports = {
         onDelete: "SET NULL",
       },
       category_id: {
-        // Relacionamento
+        // Relacionamento está definido no model
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -48,7 +48,7 @@ module.exports = {
         onDelete: "SET NULL",
       },
       attachment_id: {
-        // Relacionamento
+        // Relacionamento está definido no model
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {

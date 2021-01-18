@@ -26,6 +26,7 @@ class Recipe extends Model {
       foreignKey: "attachment_id",
       as: "attachment",
     });
+    this.hasMany(models.RecipeItem, { foreignKey: "recipe_id", as: "items" });
   }
 }
 
