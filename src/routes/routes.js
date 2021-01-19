@@ -12,6 +12,7 @@ import AuthController from "../app/controllers/AuthController";
 import CategoryController from "../app/controllers/CategoryController";
 import AttachmentController from "../app/controllers/AttachmentController";
 import RecipeController from "../app/controllers/RecipeController";
+import FavoriteController from "../app/controllers/FavoriteController";
 
 import authMiddleware from "../app/middlewares/authMiddleware";
 
@@ -33,5 +34,9 @@ routes.get("/recipes/:id", RecipeController.show);
 routes.post("/recipes", RecipeController.create);
 routes.put("/recipes/:id", RecipeController.update);
 routes.delete("/recipes/:id", RecipeController.delete);
+
+routes.post("/favorites/:recipe_id", FavoriteController.create);
+routes.get("/favorites", FavoriteController.index);
+routes.delete("/favorites/:recipe_id", FavoriteController.delete);
 
 export default routes;
