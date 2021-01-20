@@ -7,8 +7,9 @@ import Category from "../app/models/Category";
 import Attachment from "../app/models/Attachment";
 import Recipe from "../app/models/Recipe";
 import RecipeItem from "../app/models/RecipeItem";
+import Rating from "../app/models/Rating";
 
-const models = [User, Category, Attachment, Recipe, RecipeItem];
+const models = [User, Category, Attachment, Recipe, RecipeItem, Rating];
 
 class Database {
   constructor() {

@@ -25,6 +25,10 @@ class RecipeController {
           association: "items",
           attributes: ["id", "name", "quantity"],
         },
+        {
+          association: "ratings",
+          attributes: ["name"],
+        },
       ],
     });
     return res.json(recipes);
@@ -37,6 +41,7 @@ class RecipeController {
         "preparation_instructions",
         "preparation_time",
         "portions",
+        "ratingAvg",
       ],
       include: [
         {
@@ -54,6 +59,10 @@ class RecipeController {
         {
           association: "items",
           attributes: ["id", "name", "quantity"],
+        },
+        {
+          association: "ratings",
+          attributes: ["name"],
         },
       ],
     });
