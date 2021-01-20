@@ -25,6 +25,10 @@ class FavoriteController {
             id: req.userId,
           },
         },
+        {
+          association: "items",
+          attributes: ["id", "name", "quantity"],
+        },
       ],
     });
 
