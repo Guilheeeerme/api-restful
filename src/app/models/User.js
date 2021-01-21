@@ -34,6 +34,10 @@ class User extends Model {
       through: "user_favorites",
       foreignKey: "user_id",
     });
+    this.belongsTo(models.Attachment, {
+      foreignKey: "avatar_id",
+      as: "avatar",
+    });
   }
 }
 

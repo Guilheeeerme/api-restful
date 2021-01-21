@@ -29,6 +29,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    queryInterface.dropTable("attchments");
+    queryInterface.dropTable("attachments");
   },
 };

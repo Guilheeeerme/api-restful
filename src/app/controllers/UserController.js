@@ -5,6 +5,12 @@ class UserController {
   async index(req, res) {
     const user = await User.findAll({
       attributes: ["id", "name", "email", "status", "is_admin"],
+      include: [
+        {
+          association: "avatar",
+          attributes: ["id", "file", "url"],
+        },
+      ],
     });
     // console.log(req.userId);
     return res.json(user);
@@ -14,6 +20,12 @@ class UserController {
     const { id } = req.params;
     const user = await User.findByPk(id, {
       attributes: ["id", "name", "email", "status", "is_admin"],
+      include: [
+        {
+          association: "avatar",
+          attributes: ["id", "file", "url"],
+        },
+      ],
     });
     return res.json(user);
   }
@@ -24,6 +36,7 @@ class UserController {
         name: Yup.string().required().max(70),
         email: Yup.string().email().required().max(120),
         password: Yup.string().required().min(6),
+        avatar_id: Yup.number(),
       })
       .noUnknown(); // Garante apenas esses campos, caso passe mais são desconsiderados
 
@@ -56,6 +69,7 @@ class UserController {
       .shape({
         name: Yup.string().max(70),
         password: Yup.string().min(6),
+        avatar_id: Yup.number(),
       })
       .unknown();
 
