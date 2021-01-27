@@ -1,3 +1,7 @@
+## <p>About</p>
+
+It is an application where registered users can register their recipes so that they are available to other users. Each user can interact on the recipes, favoring or evaluating.
+
 ## <p>Routes</p>
 
 | Route    | HTTP Method | Description  |
@@ -5,7 +9,7 @@
 | `/users` |    POST     | Create user. |
 | `/auth`  |    POST     | User login.  |
 
-## <p>Routes that the user needs to be logged in</p>
+## <p>Routes that the user needs to be logged in, contains Jsonwebtoken Middleware</p>
 
 | Route                   | HTTP Method |                             Description                              |
 | :---------------------- | :---------: | :------------------------------------------------------------------: |
@@ -34,6 +38,7 @@
 - Node.js
 - Express
 - JavaScript
+- PostgreSQL
 - Sequelize
 - Bcryptjs
 - Jsonwebtoken
@@ -52,7 +57,7 @@ $ git clone https://github.com/Guilheeeerme/api-restful.git
 ### <p>Set as environment variables</p>
 
 ```shell
-In the ".env.example" file configure the connection to the database and create the secret token.
+Based on the ".env.example" file create your ".env" file and set up a database connection and I also created a secret token.
 ```
 
 ### <p>Install the dependencies</p>
